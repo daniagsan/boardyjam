@@ -2,15 +2,15 @@
 
 ###
 
-<h4 align="left">1. Instalar Python 3.13: https://www.python.org/downloads/</h4>
+<h3 align="left">1. Instalar Python 3.13: https://www.python.org/downloads/</h3>
 
 ###
 
-<h4 align="left">2. Instalar Git: https://git-scm.com/downloads</h4>
+<h3 align="left">2. Instalar Git: https://git-scm.com/downloads</h3>
 
 ###
 
-<h4 align="left">3. Debes crear una carpeta donde se guardará el repositorio con la siguiente estructura: /XXXX/boardyjam/.</h4>
+<h3 align="left">3. Debes crear una carpeta donde se guardará el repositorio con la siguiente estructura: /XXXX/boardyjam/.</h3>
 
 ###
 
@@ -18,7 +18,7 @@
 
 ###
 
-<p align="left">4. Instancia del proyecto</p>
+<h3 align="left">4. Instancia del proyecto</h3>
 
 ###
 
@@ -26,7 +26,7 @@
 
 ###
 
-<p align="left">4. Instalación de librerías</p>
+<h3 align="left">5. Instalación de librerías</h3>
 
 ###
 
@@ -34,7 +34,7 @@
 
 ###
 
-<h4 align="left">5. Ejecución del proyecto con Beeware Tools</h4>
+<h3 align="left">6. Ejecución del proyecto con Beeware Tools</h3>
 
 ###
 
@@ -46,6 +46,6 @@
 
 ###
 
-<h3 align="left">Visita https://docs.beeware.org/en/latest/index.html</h3>
+<h2 align="left">Visita https://docs.beeware.org/en/latest/index.html</h2>
 
 ###

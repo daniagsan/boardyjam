@@ -1,10 +1,8 @@
-"""
-Python Project
-"""
-
 import toga
 from toga.style import Pack
 from toga.style.pack import COLUMN, ROW
+
+from boardyjam.model.image_model import ImageModel
 
 
 class boardyjam(toga.App):
@@ -22,6 +20,7 @@ class boardyjam(toga.App):
             margin=(0, 5),
         )
 
+        self.image_model = ImageModel()
         self.name_input = toga.TextInput(flex=1)
 
         name_box = toga.Box(direction=ROW, margin=5)
@@ -29,8 +28,8 @@ class boardyjam(toga.App):
         name_box.add(self.name_input)
 
         button = toga.Button(
-            "Say Hello!",
-            on_press=self.say_hello,
+            "Elegir imagen",
+            on_press=self.select_image,
             margin=5,
         )
 
@@ -41,9 +40,15 @@ class boardyjam(toga.App):
         self.main_window.content = main_box
         self.main_window.show()
 
-    def say_hello(self, widget):
-        print(f"Hello, {self.name_input.value}")
-
+    def select_image(self, widget):
+        file_path = self.main_window.open_file_dialog(
+            title="Selecciona una imagen",
+            initial_directory=".",
+            file_types=[("Imagen", "*.png;*.jpg;*.jpeg;*.bmp")],
+        )
+        if file_path:
+            self.image_model.set_image(file_path)
+            print(f"Imagen seleccionada:{file_path}")        
 
 def main():
     return boardyjam()

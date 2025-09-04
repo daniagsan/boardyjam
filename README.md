@@ -1,51 +1,201 @@
-<h1 align="left">Instalación de librerías y dependencias para su uso</h1>
+# 🎯 BoardyJam
 
-###
+<div align="center">
 
-<h3 align="left">1. Instalar Python 3.13: https://www.python.org/downloads/</h3>
+![Python](https://img.shields.io/badge/Python-3.13-blue.svg)
+![BeeWare](https://img.shields.io/badge/BeeWare-Toga-green.svg)
+![License](https://img.shields.io/badge/License-MIT-yellow.svg)
+![Platform](https://img.shields.io/badge/Platform-Cross--Platform-lightgrey.svg)
 
-###
+**Una aplicación de escritorio multiplataforma para gestión de imágenes construida con BeeWare/Toga**
 
-<h3 align="left">2. Instalar Git: https://git-scm.com/downloads</h3>
+[📖 Documentación](#-documentación) • [🚀 Instalación](#-instalación-rápida) • [💻 Uso](#-uso) • [🏗️ Arquitectura](#️-arquitectura) • [🤝 Contribuir](#-contribuir)
 
-###
+</div>
 
-<h3 align="left">3. Debes crear una carpeta donde se guardará el repositorio con la siguiente estructura: /XXXX/boardyjam/.</h3>
+---
 
-###
+## 📋 **Descripción**
 
-<p align="left">Puedes utilizar cualquier gestor de repositorios, pero para mayor compatibilidad te recomendamos github desktop: https://desktop.github.com/download/<br><br>Antes de descargar el proyecto, debes tener vacía la carpeta.</p>
+BoardyJam es una aplicación de escritorio multiplataforma desarrollada en Python que permite a los usuarios seleccionar, visualizar y gestionar imágenes de manera intuitiva. Construida con el framework BeeWare/Toga, la aplicación funciona nativamente en Windows, macOS, Linux, iOS, Android y Web.
 
-###
+### ✨ **Características Principales**
 
-<h3 align="left">4. Instancia del proyecto</h3>
+- 🖼️ **Selección de Imágenes**: Interfaz intuitiva para seleccionar archivos de imagen
+- 🎨 **Visualización**: Vista previa de imágenes en tiempo real
+- 📱 **Multiplataforma**: Funciona en todos los sistemas operativos principales
+- 🏗️ **Arquitectura MVC**: Código bien estructurado y mantenible
+- 🔍 **Validación**: Soporte para formatos PNG, JPG, JPEG, BMP, GIF
+- ⚡ **Patrón Observer**: Actualizaciones reactivas de la interfaz
 
-###
+---
 
-<p align="left">Una vez que hayas vinculado tu gestor de repositorios o descargado el proyecto a la forma de tu preferencia, dentro de la carpeta deberías tener dos archivos dentro de la carpeta boardyjam:<br><br>/boardyjam/ (Carpeta)<br>README<br><br>Si, habrá otra carpeta con el mismo nombre, te va a crear una dirección de archivo /boardyjam/boardyjam/. Si damos clic en este, veremos las carpetas y archivos del proyecto.</p>
+## 🚀 **Instalación Rápida**
 
-###
+### **Prerrequisitos**
 
-<h3 align="left">5. Instalación de librerías</h3>
+- **Python 3.13+**: [Descargar aquí](https://www.python.org/downloads/)
+- **Git**: [Descargar aquí](https://git-scm.com/downloads)
 
-###
+### **Pasos de Instalación**
 
-<p align="left">Accedemos a la carpeta del proyecto a través del CMD con la siguiente dirección: C:\Users\XXXX\XXXX\XX\boardyjam.<br><br>Ejecutamos los comandos en el siguiente orden:<br><br>1: py -3.12 -m venv beeware-venv<br>2: beeware-venv\Scripts\activate<br><br>Una vez activado, nuestro directorio debería verse con el prefijo (beeware-venv): <br><br>(beeware-venv) C:\Users\XXXX\XXXX\XX\boardyjam><br><br>Ya tenemos activado el framework, ahora solo falta ejecutar el proyecto.</p>
+1. **Clonar el repositorio**
+   ```bash
+   git clone <tu-repositorio-url>
+   cd boardyjam
+   ```
 
-###
+2. **Crear entorno virtual**
+   ```bash
+   python -m venv beeware-venv
+   ```
 
-<h3 align="left">6. Ejecución del proyecto con Beeware Tools</h3>
+3. **Activar entorno virtual**
+   
+   **Windows:**
+   ```bash
+   beeware-venv\Scripts\activate
+   ```
+   
+   **macOS/Linux:**
+   ```bash
+   source beeware-venv/bin/activate
+   ```
 
-###
+4. **Instalar dependencias**
+   ```bash
+   python -m pip install briefcase
+   ```
 
-<p align="left">Ejecutar el siguiente comando en la misma dirección anterior del CMD:<br><br>python -m pip install briefcase<br><br>Una vez instalado, debemos entrar a la carpeta boardyjam que contiene el código fuente y ejecutar el proyecto con estos comandos en orden: <br><br>1: cd boardyjam<br>2: briefcase dev</p>
+5. **Ejecutar la aplicación**
+   ```bash
+   cd boardyjam
+   briefcase dev
+   ```
 
-###
+---
 
-<p align="left"></p>
+## 💻 **Uso**
 
-###
+### **Interfaz Principal**
 
-<h2 align="left">Visita https://docs.beeware.org/en/latest/index.html</h2>
+1. **Seleccionar Imagen**: Haz clic en "Elegir imagen" para abrir el diálogo de selección
+2. **Formatos Soportados**: PNG, JPG, JPEG, BMP, GIF
+3. **Vista Previa**: La imagen seleccionada se mostrará automáticamente
+4. **Estado**: El label inferior muestra el estado actual de la operación
 
-###
+### **Flujo de Trabajo**
+
+```
+Usuario selecciona imagen → Validación de formato → Carga en modelo → Actualización de vista
+```
+
+---
+
+## 🏗️ **Arquitectura**
+
+BoardyJam implementa el patrón **Model-View-Controller (MVC)** con **Observer Pattern**:
+
+```
+src/boardyjam/
+├── __main__.py          # Punto de entrada
+├── view/                # Capa de presentación
+│   ├── app.py          # Interfaz principal
+│   └── button_panel.py # Componentes UI
+├── controller/          # Lógica de negocio
+│   └── image_controller.py
+├── model/              # Capa de datos
+│   └── image_model.py
+└── widgets/            # Componentes personalizados
+```
+
+### **Componentes Principales**
+
+- **🎨 View Layer**: Interfaz de usuario con Toga
+- **🎮 Controller Layer**: Lógica de negocio y coordinación
+- **📦 Model Layer**: Gestión de datos y estado
+- **🔄 Observer Pattern**: Comunicación reactiva entre capas
+
+---
+
+## 📖 **Documentación**
+
+- **[📋 Documentación Técnica](TECHNICAL.md)**: Arquitectura detallada y patrones de diseño
+- **[🤝 Guía de Contribución](CONTRIBUTING.md)**: Cómo contribuir al proyecto
+- **[📚 API Reference](API.md)**: Documentación de clases y métodos
+- **[🚀 Deployment Guide](DEPLOYMENT.md)**: Guía de despliegue multiplataforma
+
+---
+
+## 🛠️ **Desarrollo**
+
+### **Estructura del Proyecto**
+
+```
+boardyjam/
+├── src/boardyjam/       # Código fuente
+├── tests/              # Pruebas unitarias
+├── resources/          # Recursos de la aplicación
+├── pyproject.toml      # Configuración del proyecto
+└── README.md          # Este archivo
+```
+
+### **Comandos Útiles**
+
+```bash
+# Desarrollo
+briefcase dev
+
+# Construir para distribución
+briefcase build
+
+# Crear paquete
+briefcase package
+
+# Ejecutar tests
+python -m pytest tests/
+```
+
+---
+
+## 🤝 **Contribuir**
+
+¡Las contribuciones son bienvenidas! Por favor lee nuestra [Guía de Contribución](CONTRIBUTING.md) para más detalles.
+
+### **Proceso Rápido**
+
+1. Fork el proyecto
+2. Crea una rama para tu feature (`git checkout -b feature/AmazingFeature`)
+3. Commit tus cambios (`git commit -m 'Add some AmazingFeature'`)
+4. Push a la rama (`git push origin feature/AmazingFeature`)
+5. Abre un Pull Request
+
+---
+
+## 📄 **Licencia**
+
+Este proyecto está bajo la Licencia MIT. Ver el archivo [LICENSE](LICENSE) para más detalles.
+
+---
+
+## 👨‍💻 **Autor**
+
+**Daniel Aguilera**
+- 📧 Email: jdas_9920@hotmail.com
+- 🌐 Proyecto: BoardyJam v0.0.1
+
+---
+
+## 🔗 **Enlaces Útiles**
+
+- [📖 Documentación de BeeWare](https://docs.beeware.org/en/latest/index.html)
+- [🐍 Python.org](https://www.python.org/)
+- [📱 Toga Framework](https://toga.readthedocs.io/)
+
+---
+
+<div align="center">
+
+**⭐ ¡Si te gusta este proyecto, dale una estrella! ⭐**
+
+</div>
